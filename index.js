@@ -1,3 +1,15 @@
+// RequestAnimFrame: a browser API for getting smooth animations
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       || 
+    window.webkitRequestAnimationFrame || 
+    window.mozRequestAnimationFrame    || 
+    window.oRequestAnimationFrame      || 
+    window.msRequestAnimationFrame     ||  
+    function( callback ){
+      return window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
 //Set a width and length equal to full screen
 var W = window.innerWidth;
 var H = window.innerHeight;
@@ -47,3 +59,22 @@ function Paddle(position) {
 //Populate the paddles array with 2 new paddles
 paddles.push(new Paddle("bottom"));
 paddles.push(new Paddle("top"));
+
+//Drawing everything on the canvas
+function paintCanvas() {
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, W, H);
+}
+
+function draw() {
+  paintCanvas();
+  for(var i = 0; i < paddles.length; i++) {
+    p = paddles[i];
+    ctx.fillStyle = "white";
+    ctx.fillRect(p.x, p.y, p.w, p.h);
+  }
+
+  ball.draw();
+}
+
+draw();
