@@ -33,3 +33,17 @@ ball = {
     ctx.fill();
   }
 };
+
+//Paddle "class" that creates the paddles
+function Paddle(position) {
+//Height & width  
+  this.h = 5;
+  this.w = 150;
+//paddles' position
+  this.x = W/2 - this.w/2;
+  this.y = (position == "top") ? 0 : H - this.h;
+}
+
+//Populate the paddles array with 2 new paddles
+paddles.push(new Paddle("bottom"));
+paddles.push(new Paddle("top"));
