@@ -54,7 +54,7 @@ canvas.height = H;
 
 // Function to paint canvas
 function paintCanvas() {
-  ctx.fillStyle = "0D1C33";
+  ctx.fillStyle = "black";
   ctx.fillRect(0, 0, W, H);
 }
 
